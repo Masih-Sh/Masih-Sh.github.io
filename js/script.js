@@ -99,7 +99,7 @@ function splitFunction()
     var url = window.location.search;
     console.log(url);
     var result = url.split("="); // Splits string based on =
-    document.getElementById("GamerTag").innerHTML = result[1];
+    document.getElementById("gamertag").innerHTML = result[1];
 
 }
 // Each time this function is called a GameObject
