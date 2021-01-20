@@ -90,17 +90,14 @@ for (var i = 0; i < options.length; i++) {
     selectBox.options.add(new Option(option.text, option.value, option.selected));
 }
 
-function onPageLoad()
-{
-    splitFunction();
-}
+var url = window.location.search;
+var result = new URLSearchParams(url);
+ var getTag = result.get("playerGamerTag");
+
+
 function splitFunction()
 {
-    var url = window.location.search;
-    console.log(url);
-    var result = url.split("="); // Splits string based on =
-    document.getElementById("gamertag").innerHTML = result[1];
-
+    document.getElementById("gamertag").innerHTML = getTag;
 }
 // Each time this function is called a GameObject
 // is create based on the arguments
