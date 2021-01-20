@@ -1,6 +1,7 @@
 
 
 // get a handle to the canvas context
+
 var canvas = document.getElementById("game");
 var context = canvas.getContext("2d");
 
@@ -9,6 +10,8 @@ npcImage.src = "./img/Fire.png";
 
 var sprite = new Image();
 sprite.src = "./img/Animation.png"; // Frames 1 to 6
+
+var url = document.location.href;
 
 
 // Default GamerInput is set to None
@@ -91,6 +94,7 @@ for (var i = 0; i < options.length; i++) {
     var option = options[i];
     selectBox.options.add(new Option(option.text, option.value, option.selected));
 }
+
 
 // Each time this function is called a GameObject
 // is create based on the arguments
@@ -244,27 +248,23 @@ function draw()
     // Clear Canvas
     // Iterate through all GameObjects
     // Draw each GameObject
-
-    context.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
-
-    for (i = 0; i < gameobjects.length; i++)
-    {
-        if (gameobjects[i].health > 0)
-        {
-            // console.log("Image :" + gameobjects[i].img);
-        }
-    }
+    
+    context.clearRect(0, 0, canvas.width, canvas.height); // clear canvas       
 
     drawHealthbar();
 
-
     context.drawImage(npcImage, gameobjects[1].x, gameobjects[1].y);
+
+
+    context.fillText(url, 10, 50);
 
 
     animate();
 
 
+
 }
+
 
 // Total Frames
 var frames = 6;
@@ -288,7 +288,8 @@ function animate()
     // Draw sprite frame
     context.drawImage(sprite, (sprite.width / 6) * currentFrame, 0, 100, 100, gameobjects[0].x, gameobjects[0].y, 50, 50);
 
-    context.font = '36pt Orbitron';
+
+    context.font = '5pt Orbitron';
 
 }
 function gameloop()
