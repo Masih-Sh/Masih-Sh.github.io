@@ -10,10 +10,6 @@ npcImage.src = "./img/Fire.png";
 
 var sprite = new Image();
 sprite.src = "./img/Animation.png"; // Frames 1 to 6
-
-var url = document.location.href;
-
-
 // Default GamerInput is set to None
 var gamerInput = new GamerInput("None"); //No Input
 
@@ -25,7 +21,6 @@ function GameObject(name, image, health)
     this.x = 0;
     this.y = 0;
 }
-
 function drawHealthbar()
 {
     var width = 50;
@@ -95,7 +90,18 @@ for (var i = 0; i < options.length; i++) {
     selectBox.options.add(new Option(option.text, option.value, option.selected));
 }
 
+function onPageLoad()
+{
+    splitFunction();
+}
+function splitFunction()
+{
+    var url = window.location.search;
+    console.log(url);
+    var result = url.split("="); // Splits string based on =
+    document.getElementById("GamerTag").innerHTML = result[1];
 
+}
 // Each time this function is called a GameObject
 // is create based on the arguments
 // In JavaScript you can consider everything an Object
@@ -254,9 +260,6 @@ function draw()
     drawHealthbar();
 
     context.drawImage(npcImage, gameobjects[1].x, gameobjects[1].y);
-
-
-    context.fillText(url, 10, 50);
 
 
     animate();
