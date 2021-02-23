@@ -1,7 +1,6 @@
 
 
 // get a handle to the canvas context
-
 var canvas = document.getElementById("game");
 var context = canvas.getContext("2d");
 
@@ -10,6 +9,8 @@ npcImage.src = "./img/Fire.png";
 
 var sprite = new Image();
 sprite.src = "./img/Animation.png"; // Frames 1 to 6
+
+
 // Default GamerInput is set to None
 var gamerInput = new GamerInput("None"); //No Input
 
@@ -17,10 +18,25 @@ function GameObject(name, image, health)
 {
     this.name = name;
     this.image = image;
-    this.health = health;
-    this.x = 0;
-    this.y = 0;
+    this.health = health; 
+       
+    this.x = parseInt(localStorage.getItem('Xlocation'));
+
+    if(isNaN(this.x))
+    {
+       this.x = 0;
+       localStorage.setItem('Xlocation',0);
+    }
+  
+    this.y = parseInt(localStorage.getItem('Ylocation'));
+
+    if(isNaN(this.y))
+    {
+       this.y = 0;
+       localStorage.setItem('Ylocation',0);
+    }    
 }
+
 function drawHealthbar()
 {
     var width = 50;
@@ -49,8 +65,21 @@ function drawHealthbar()
     context.fillRect(gameobjects[0].x, gameobjects[0].y-20, fillVal * width, height);
 }
 // Update Heads Up Display with Weapon Information
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+ // Typical action to be performed when the document is ready:
+ //document.getElementById("demo").innerHTML = xhttp.responseText;
+ var response = JSON.parse(xhttp.responseText);
+ console.log(response.FireEquipment[0].power);
+}
+};
+xhttp.open("GET", "./data/FireEquipment.json", true);
+xhttp.send();
+
 function weaponSelection()
 {
+    
     var selection = document.getElementById("equipment").value;
     var active = document.getElementById("active");
     if (active.checked == true) {
@@ -90,15 +119,23 @@ for (var i = 0; i < options.length; i++) {
     selectBox.options.add(new Option(option.text, option.value, option.selected));
 }
 
-var url = window.location.search;
-var result = new URLSearchParams(url);
- var getTag = result.get("playerGamerTag");
-
-
-function splitFunction()
+function updateXLocation() 
 {
-    document.getElementById("gamertag").innerHTML = getTag;
-}
+    
+    var current_Xlocation = localStorage.getItem('Xlocation');  
+    document.getElementById("PlayerXLocation").innerHTML = " [ " + current_Xlocation + " ] "; 
+    localStorage.setItem('Xlocation', parseInt(gameobjects[0].x)); 
+  
+  }
+
+  function updateYLocation() 
+  {
+    var current_Ylocation = localStorage.getItem('Ylocation');  
+    document.getElementById("PlayerYLocation").innerHTML = " [ " + current_Ylocation + " ] "; 
+    localStorage.setItem('Ylocation', parseInt(gameobjects[0].y)); 
+  
+  }
+
 // Each time this function is called a GameObject
 // is create based on the arguments
 // In JavaScript you can consider everything an Object
@@ -206,6 +243,10 @@ function update() {
     // Updating position and gamestate
     // console.log("Update");
     
+    updateXLocation();
+
+    updateYLocation();
+
 
         if (gamerInput.action === "Up")
         {
@@ -235,11 +276,18 @@ function update() {
         gameobjects[0].health--;
     }
 
-    for (i = 0; i < gameobjects.length; i++)
-    {
-        console.log(gameobjects[i].x);
-        console.log(gameobjects[i].y);
-    }
+    
+        console.log(gameobjects[0].x);
+        console.log(gameobjects[0].y);
+   
+
+    
+
+    //localStorage.setItem("PlayersLastLocationY",gameobjects[0].y);
+   // var temp2 = localStorage.getItem("PlayersLastLocationY");
+   // console.log(temp2);
+
+  
 
 }
 
@@ -251,10 +299,19 @@ function draw()
     // Clear Canvas
     // Iterate through all GameObjects
     // Draw each GameObject
-    
-    context.clearRect(0, 0, canvas.width, canvas.height); // clear canvas       
+
+    context.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
+
+    for (i = 0; i < gameobjects.length; i++)
+    {
+        if (gameobjects[i].health > 0)
+        {
+            // console.log("Image :" + gameobjects[i].img);
+        }
+    }
 
     drawHealthbar();
+
 
     context.drawImage(npcImage, gameobjects[1].x, gameobjects[1].y);
 
@@ -262,9 +319,7 @@ function draw()
     animate();
 
 
-
 }
-
 
 // Total Frames
 var frames = 6;
@@ -288,8 +343,7 @@ function animate()
     // Draw sprite frame
     context.drawImage(sprite, (sprite.width / 6) * currentFrame, 0, 100, 100, gameobjects[0].x, gameobjects[0].y, 50, 50);
 
-
-    context.font = '5pt Orbitron';
+    context.font = '36pt Orbitron';
 
 }
 function gameloop()

@@ -1,0 +1,19 @@
+ 
+   { 
+       "FireEquipment":[
+        {
+            "name":"Fire Hose",
+            "power" : 15 
+        },
+        {
+            "name":"Fire Extinguisher",
+            "power" : 13 
+        },
+        {
+            "name":"Fire Blanket",
+            "power" : 10 
+        }       
+    ]   
+   }
+
+
