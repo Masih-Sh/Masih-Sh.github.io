@@ -1,6 +1,6 @@
  
    { 
-       "FireEquipment":[
+       "FireEquipment"[
         {
             "name":"Fire Hose",
             "power" : 15 
