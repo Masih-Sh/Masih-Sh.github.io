@@ -4,7 +4,7 @@
   background-color: #000000;
   border: none;
   box-shadow: 0 9px#505050;
-  padding: 10px;
+  padding: 30px;
   text-align: center;
   font-size: 28px;
 }
@@ -141,6 +141,6 @@ select {
 }
 canvas
 {
-  width: 90vw;
-  height: 40vh;
+  width: 50vw;
+  height: 50vh;
 }
