@@ -43,10 +43,8 @@
 </head>
 
 <body>
-    <h1 id="HUD" onload="weaponSelection()"></h1> 
-    <h1 id="PlayerXLocation" onload="updateXLocation()"></h1></br>
-    <h1 id="PlayerYLocation" onload="updateYLocation()"></h1></br>
-    <ul id= "FireEquipment"></ul>   
+    <!--<h1 id="HUD" onload="actionSelection()"></h1> 
+    <ul id= "FireEquipment"></ul>-->   
     <canvas tabindex="0" id="game" style="border: black 1px solid;">
         Oops! looks like your browser does not support canvas tag
     </canvas>
@@ -68,10 +66,10 @@
                 <td><button id="buttonDown" class="button green round">A</button></td>
                 <td>&nbsp;</td>
             </tr>
-             <tr>
+            <!--<tr>
         <td colspan="3" align="center">
           <div class="custom-select" style="width:200px;">
-            <select id="equipment" onchange="weaponSelection()">
+            <select id="equipment" onchange="actionSelection()">
             </select>
           </div>
         </td>
@@ -79,12 +77,12 @@
       <tr>
         <td colspan="3" align="center">
           <label class="switch" >
-            Weapon Activator
-            <input id="active" onclick="weaponSelection()" type="checkbox">            
+          Activator
+            <input id="active" onclick="actionSelection()" type="checkbox">            
             <span class="toggle"></span>
           </label>
         </td>
-      </tr>
+      </tr>-->
 
         </tbody>
     </table>
