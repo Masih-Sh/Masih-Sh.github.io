@@ -146,7 +146,7 @@ function drawTheOrderBar1()
         context.fillStyle = "white";
         mat1Oven1Dropped = true;
         firstGordon.play();
-
+        firstGordon.muted();
     }
     context.rect(gameobjects[20].x, gameobjects[20].y-3, 3,3);
     context.fill();
@@ -157,9 +157,8 @@ function drawTheOrderBar1()
     {
         context.fillStyle = "white";
         mat2Oven1Dropped = true;
-        firstGordon.play();
-
-
+        firstGordon.play();        
+        firstGordon.muted();
     }
     context.rect(gameobjects[20].x+4, gameobjects[20].y-3, 3,3);
     context.fill();
@@ -171,8 +170,7 @@ function drawTheOrderBar1()
         context.fillStyle = "white";
         mat3Oven1Dropped = true;
         firstGordon.play();
-
-
+        firstGordon.muted();
     }
     context.rect(gameobjects[20].x+8, gameobjects[20].y-3, 3,3);
     context.fill();
@@ -184,7 +182,7 @@ function drawTheOrderBar1()
         context.fillStyle = "white";
         mat4Oven1Dropped = true;
         firstGordon.play();
-
+        firstGordon.muted();
     }
     context.rect(gameobjects[20].x+12, gameobjects[20].y-3, 3,3);    
     context.fill();
@@ -199,7 +197,7 @@ function drawTheOrderBar2()
         context.fillStyle = "white";
         mat1Oven2Dropped = true;
         firstGordon.play();
-
+        firstGordon.muted();
     }
     context.rect(gameobjects[21].x, gameobjects[21].y-3, 3,3);
     context.fill();
@@ -211,8 +209,7 @@ function drawTheOrderBar2()
         context.fillStyle = "white";
         mat2Oven2Dropped = true;
         firstGordon.play();
-
-
+        firstGordon.muted();
     }
     context.rect(gameobjects[21].x+4, gameobjects[21].y-3, 3,3);
     context.fill();
@@ -224,8 +221,7 @@ function drawTheOrderBar2()
         context.fillStyle = "white";
         mat3Oven2Dropped = true;
         firstGordon.play();
-
-
+        firstGordon.muted();
     }
     context.rect(gameobjects[21].x+8, gameobjects[21].y-3, 3,3);
     context.fill();
@@ -237,7 +233,7 @@ function drawTheOrderBar2()
         context.fillStyle = "white";
         mat4Oven2Dropped = true;
         firstGordon.play();
-
+        firstGordon.muted();
     }   
     context.rect(gameobjects[21].x+12, gameobjects[21].y-3, 3,3);
     context.fill();
