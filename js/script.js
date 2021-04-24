@@ -240,6 +240,7 @@ function drawTheOrderBar2()
 }
 
 function drawCookingBar1()
+
 {
     var width = 20;
     var height = 3;
