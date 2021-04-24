@@ -109,6 +109,8 @@ var order2PickedUp = new Boolean(false);
 var order1Dropped = new Boolean(false);
 var order2Dropped = new Boolean(false);
 ///////////////////////////////////////////////////
+var firstGordon= document.getElementById("Gordon1");
+
 
 // Default GamerInput is set to None
 var gamerInput = new GamerInput("None"); //No Input
@@ -143,6 +145,8 @@ function drawTheOrderBar1()
     {
         context.fillStyle = "white";
         mat1Oven1Dropped = true;
+        firstGordon.play();
+
     }
     context.rect(gameobjects[20].x, gameobjects[20].y-3, 3,3);
     context.fill();
@@ -153,6 +157,8 @@ function drawTheOrderBar1()
     {
         context.fillStyle = "white";
         mat2Oven1Dropped = true;
+        firstGordon.play();
+
 
     }
     context.rect(gameobjects[20].x+4, gameobjects[20].y-3, 3,3);
@@ -164,6 +170,8 @@ function drawTheOrderBar1()
     {
         context.fillStyle = "white";
         mat3Oven1Dropped = true;
+        firstGordon.play();
+
 
     }
     context.rect(gameobjects[20].x+8, gameobjects[20].y-3, 3,3);
@@ -175,6 +183,8 @@ function drawTheOrderBar1()
     {
         context.fillStyle = "white";
         mat4Oven1Dropped = true;
+        firstGordon.play();
+
     }
     context.rect(gameobjects[20].x+12, gameobjects[20].y-3, 3,3);    
     context.fill();
@@ -188,6 +198,7 @@ function drawTheOrderBar2()
     {
         context.fillStyle = "white";
         mat1Oven2Dropped = true;
+        firstGordon.play();
 
     }
     context.rect(gameobjects[21].x, gameobjects[21].y-3, 3,3);
@@ -199,6 +210,8 @@ function drawTheOrderBar2()
     {
         context.fillStyle = "white";
         mat2Oven2Dropped = true;
+        firstGordon.play();
+
 
     }
     context.rect(gameobjects[21].x+4, gameobjects[21].y-3, 3,3);
@@ -210,6 +223,8 @@ function drawTheOrderBar2()
     {
         context.fillStyle = "white";
         mat3Oven2Dropped = true;
+        firstGordon.play();
+
 
     }
     context.rect(gameobjects[21].x+8, gameobjects[21].y-3, 3,3);
@@ -221,6 +236,8 @@ function drawTheOrderBar2()
     {
         context.fillStyle = "white";
         mat4Oven2Dropped = true;
+        firstGordon.play();
+
     }   
     context.rect(gameobjects[21].x+12, gameobjects[21].y-3, 3,3);
     context.fill();
@@ -262,54 +279,54 @@ function drawCookingBar2()
     context.fillRect(gameobjects[21].x, gameobjects[21].y+20, fillVal * width, height);
 }
 // Update Heads Up Display with Weapon Information
-//var xhttp = new XMLHttpRequest();
-//xhttp.onreadystatechange = function() {
-//if (this.readyState == 4 && this.status == 200) {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
  // Typical action to be performed when the document is ready:
- //document.getElementById("demo").innerHTML = xhttp.responseText;
- //var response = JSON.parse(xhttp.responseText);
- //console.log(response.FireEquipment[0].power);
-//}
-//};
-//xhttp.open("GET", "./data/FireEquipment.json", true);
-//xhttp.send();
+ document.getElementById("demo").innerHTML = xhttp.responseText;
+ var response = JSON.parse(xhttp.responseText);
+ console.log(response.FireEquipment[0].power);
+}
+};
+xhttp.open("GET", "./data/FireEquipment.json", true);
+xhttp.send();
 
-//function actionSelection()
-//{
+function actionSelection()
+{
     
-    //var selection = document.getElementById("equipment").value;
-    //var active = document.getElementById("active");
-    //if (active.checked == true) {
-        //document.getElementById("HUD").innerHTML = selection + " active ";
-        //console.log("Equipment Active");
-   // } else {
-       // document.getElementById("HUD").innerHTML = selection + " selected ";
-       // console.log("Equipment Selected");
-    //}
-//}
+    var selection = document.getElementById("equipment").value;
+    var active = document.getElementById("active");
+    if (active.checked == true) {
+        document.getElementById("HUD").innerHTML = selection + " active ";
+        console.log("Equipment Active");
+   } else {
+        document.getElementById("HUD").innerHTML = selection + " selected ";
+        console.log("Equipment Selected");
+    }
+}
 
 
 // Array of Weapon Options
-//var options = [{
-    //"text": "Select an Action",
-    //"value": "No action",
-    ////"selected": true
-//},
-//{
-    //"text": "Picking Up",
-    //"value": "Picked"
-//},
-//{
-    //"text": "Droping Down",
-    //"value": "Droped"
-//}
-//];
+var options = [{
+    "text": "Select an Action",
+    "value": "No action",
+    "selected": true
+},
+{
+    "text": "Picking Up",
+    "value": "Picked"
+},
+{
+    "text": "Droping Down",
+    "value": "Droped"
+}
+];
 
-//var selectBox = document.getElementById('equipment');
+var selectBox = document.getElementById('equipment');
 
 //for (var i = 0; i < options.length; i++) {
-   // var option = options[i];
-    ////selectBox.options.add(new Option(option.text, option.value, option.selected));
+   //var option = options[i];
+    //selectBox.options.add(new Option(option.text, option.value, option.selected));
 //}
 
 function updateXLocation() 
