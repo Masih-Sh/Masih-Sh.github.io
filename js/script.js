@@ -109,7 +109,8 @@ var order2PickedUp = new Boolean(false);
 var order1Dropped = new Boolean(false);
 var order2Dropped = new Boolean(false);
 ///////////////////////////////////////////////////
-
+var eatingOrder1 = new Boolean(false);
+var eatingOrder2 = new Boolean(false);
 // Default GamerInput is set to None
 var gamerInput = new GamerInput("None"); //No Input
 
@@ -267,7 +268,7 @@ function drawEatingBar1()
     var width = 20;
     var height = 3;
     var max = 60;
-    var val = cookingTime1;
+    var val = eatingTime1;
 
     // Draw the background
     context.fillStyle = "#00FF00";//"#000000";
@@ -284,7 +285,7 @@ function drawEatingBar2()
     var width = 20;
     var height = 3;
     var max = 60;
-    var val = cookingTime1;
+    var val = eatingTime2;
 
     // Draw the background
     context.fillStyle = "#00FF00";//"#000000";
@@ -450,7 +451,8 @@ var order2 = new GameObject("food","FOOD.png");
 
 var cookingTime1 = 120;
 var cookingTime2 = 120;
-
+var eatingTime1 = 120;
+var eatingTime2 = 120;
 function init()
 {
     //npcs
@@ -595,6 +597,14 @@ function update() {
     if(cookingTime2 == 0)
     {
         oven2CookingFinished = true;
+    }
+    if(eatingOrder1 == true)
+    {
+        eatingTime1--;
+    }
+    if(eatingOrder2 == true)
+    {
+        eatingTime2--;
     }
     updateXLocation();
     updateYLocation();
@@ -872,6 +882,7 @@ if(order1Dropped == true)
 {
     gameobjects[22].x = 180;
     gameobjects[22].y = 55;
+    eatingOrder1 = true;
 }
 if(gameobjects[4].x< gameobjects[0].x+9 && gameobjects[0].x+7 <gameobjects[4].x+8 &&
     gameobjects[0].y+13.5 > gameobjects[4].y && gameobjects[0].y+13.5 < gameobjects[4].y+4)
@@ -883,6 +894,7 @@ if(order2Dropped == true)
 {
     gameobjects[23].x = 180;
     gameobjects[23].y = 105;
+    eatingOrder2 = true;
 }
 }
 
