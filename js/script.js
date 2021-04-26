@@ -261,6 +261,41 @@ function drawCookingBar2()
     var fillVal = Math.min(Math.max(val / max, 0), 1);
     context.fillRect(gameobjects[21].x, gameobjects[21].y+20, fillVal * width, height);
 }
+////////////////////////////////////
+function drawEatingBar1()
+{
+    var width = 20;
+    var height = 3;
+    var max = 60;
+    var val = cookingTime1;
+
+    // Draw the background
+    context.fillStyle = "#00FF00";//"#000000";
+    context.clearRect(gameobjects[3].x+5, gameobjects[3].y+14, canvas.width, canvas.height);
+    context.fillRect(gameobjects[3].x+5 , gameobjects[3].y+14, width, height);
+
+    // Draw the fill
+    context.fillStyle = "#000000";//"#00FF00";
+    var fillVal = Math.min(Math.max(val / max, 0), 1);
+    context.fillRect(gameobjects[3].x+5, gameobjects[3].y+14, fillVal * width, height);
+}
+function drawEatingBar2()
+{
+    var width = 20;
+    var height = 3;
+    var max = 60;
+    var val = cookingTime1;
+
+    // Draw the background
+    context.fillStyle = "#00FF00";//"#000000";
+    context.clearRect(gameobjects[4].x+5 , gameobjects[4].y+14, canvas.width, canvas.height);
+    context.fillRect(gameobjects[4].x+5 , gameobjects[4].y+14, width, height);
+
+    // Draw the fill
+    context.fillStyle = "#000000";//"#00FF00";
+    var fillVal = Math.min(Math.max(val / max, 0), 1);
+    context.fillRect(gameobjects[4].x+5, gameobjects[4].y+14, fillVal * width, height);
+}
 // Update Heads Up Display with Weapon Information
 //var xhttp = new XMLHttpRequest();
 //xhttp.onreadystatechange = function() {
@@ -863,6 +898,8 @@ function draw()
     //context.drawImage(image2,0,1000);
     drawCookingBar1();
     drawCookingBar2();
+    drawEatingBar1();
+    drawEatingBar2();
 
     context.drawImage(sprite, gameobjects[0].x, gameobjects[0].y);
     context.drawImage(npcImage, gameobjects[1].x, gameobjects[1].y);
