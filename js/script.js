@@ -405,22 +405,32 @@ function buttonNotPushed()
 var moveUp = document.getElementById("buttonUp");
 
 moveUp.addEventListener("mousedown",buttonOnClickUp);
+moveUp.addEventListener("ontouchstart",buttonOnClickUp);
 moveUp.addEventListener("mouseup",buttonNotPushed);
+moveUp.addEventListener("ontouchend",buttonNotPushed);
+
 
 var moveDown = document.getElementById("buttonDown");
 
 moveDown.addEventListener("mousedown",buttonOnClickDown);
+moveDown.addEventListener("ontouchstart",buttonOnClickDown);
 moveDown.addEventListener("mouseup",buttonNotPushed);
+moveDown.addEventListener("ontouchend",buttonNotPushed);
+
 
 var moveLeft = document.getElementById("buttonLeft");
 
-moveLeft.addEventListener("mousedown", buttonOnClickLeft);
-moveLeft.addEventListener("mouseup", buttonNotPushed);
+moveLeft.addEventListener("mousedown",buttonOnClickLeft);
+moveLeft.addEventListener("ontouchstart",buttonOnClickLeft);
+moveLeft.addEventListener("mouseup",buttonNotPushed);
+moveLeft.addEventListener("ontouchend",buttonNotPushed);
 
 var moveRight = document.getElementById("buttonRight");
 
-moveRight.addEventListener("mousedown", buttonOnClickRight);
-moveRight.addEventListener("mouseup", buttonNotPushed);
+moveRight.addEventListener("mousedown",buttonOnClickRight);
+moveRight.addEventListener("ontouchstart",buttonOnClickRight);
+moveRight.addEventListener("mouseup",buttonNotPushed);
+moveLeft.addEventListener("ontouchend",buttonNotPushed);
 
 //creating gameobjects
 var player = new GameObject("Player", "CHEFRIGHT.png");
