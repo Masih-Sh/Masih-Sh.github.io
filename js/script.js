@@ -111,6 +111,14 @@ var order2Dropped = new Boolean(false);
 ///////////////////////////////////////////////////
 var eatingOrder1 = new Boolean(false);
 var eatingOrder2 = new Boolean(false);
+/////////////////////////////////////////////////////////
+var firstGordon= document.getElementById("Gordon1");
+var secondGordon= document.getElementById("Gordon2");
+var thirdGordon= document.getElementById("Gordon3");
+var fourthGordon= document.getElementById("Gordon4");
+//////////////////////////////////////////////////////////////////
+var restaurantSound= document.getElementById("RestaurantBackground");
+
 // Default GamerInput is set to None
 var gamerInput = new GamerInput("None"); //No Input
 
@@ -172,7 +180,7 @@ function drawTheOrderBar1()
 
     context.beginPath();
     context.fillStyle = "blue";
-    if(blue1IsDroppedOven1 == true || blue2IsDroppedOven1 == true) //|| blue2IsDroppedOven1 == true)
+    if(blue1IsDroppedOven1 == true || blue2IsDroppedOven1 == true)
     {
         context.fillStyle = "white";
         mat4Oven1Dropped = true;
@@ -592,6 +600,7 @@ function update() {
     // Iterate through all GameObjects
     // Updating position and gamestate
     // console.log("Update");
+    //restaurantSound.play();
     if(mat1Oven1Dropped == true && mat2Oven1Dropped == true && mat3Oven1Dropped == true && mat4Oven1Dropped == true)
     {
         cookingTime1--;
@@ -747,114 +756,165 @@ if(green2IsPicked == true)
 ///////////////////////////////////////////////////////////
 //checking the droping of our ingredient into the oven
 /////////////////////////////////////////////////////
-if ( gameobjects[20].x< gameobjects[10].x +20 && gameobjects[10].x <gameobjects[20].x+20 &&
-    gameobjects[10].y > gameobjects[20].y && gameobjects[0].y< gameobjects[20].y)
+if ( gameobjects[20].x+20 > gameobjects[10].x && gameobjects[10].x+6 > gameobjects[20].x &&
+    gameobjects[10].y < gameobjects[20].y+20 && gameobjects[10].y+3 > gameobjects[20].y)
 {
     blue1IsDroppedOven1 = true;
+    blue1IsPicked = false;
+    firstGordon.play();
 }
-if ( gameobjects[21].x< gameobjects[10].x +20 && gameobjects[10].x <gameobjects[21].x+20 &&
-    gameobjects[10].y > gameobjects[21].y && gameobjects[0].y< gameobjects[21].y)
+if ( gameobjects[21].x+20 > gameobjects[10].x && gameobjects[10].x +6 > gameobjects[21].x &&
+    gameobjects[10].y < gameobjects[21].y+20 && gameobjects[10].y+3 > gameobjects[21].y && blue1IsDroppedOven2==false)
 {
     blue1IsDroppedOven2 = true;
+    blue1IsPicked = false;
+    firstGordon.play();
 }
 
-if ( gameobjects[20].x< gameobjects[11].x +20 && gameobjects[11].x <gameobjects[20].x+20 &&
-    gameobjects[11].y > gameobjects[20].y && gameobjects[0].y< gameobjects[20].y)
+if ( gameobjects[20].x+20 > gameobjects[11].x && gameobjects[11].x+6 > gameobjects[20].x &&
+    gameobjects[11].y < gameobjects[20].y+20 && gameobjects[11].y+3 > gameobjects[20].y)
 {
     blue2IsDroppedOven1 = true;
+    blue2IsPicked = false;
+    firstGordon.play();
+
 }
-if ( gameobjects[21].x< gameobjects[11].x +20 && gameobjects[11].x <gameobjects[21].x+20 &&
-    gameobjects[11].y > gameobjects[21].y && gameobjects[0].y< gameobjects[21].y)
+if ( gameobjects[21].x+20 > gameobjects[11].x && gameobjects[11].x+6 > gameobjects[21].x &&
+    gameobjects[11].y < gameobjects[21].y+20 && gameobjects[11].y+3 > gameobjects[21].y && blue2IsDroppedOven2==false)
 {
     blue2IsDroppedOven2 = true;
+    blue2IsPicked = false;
+    firstGordon.play();
+
 }
 /////////////////////////////////////////////////
-if ( gameobjects[20].x< gameobjects[12].x +20 && gameobjects[12].x <gameobjects[20].x+20 &&
-    gameobjects[12].y > gameobjects[20].y && gameobjects[0].y< gameobjects[20].y)
+if ( gameobjects[20].x+20 > gameobjects[12].x && gameobjects[12].x+6 > gameobjects[20].x &&
+    gameobjects[12].y < gameobjects[20].y+20 && gameobjects[12].y+3 > gameobjects[20].y && red1IsDroppedOven1==false)
 {
     red1IsDroppedOven1 = true;
+    red1IsPicked = false;
+    secondGordon.play();
+
+    
 }
-if ( gameobjects[21].x< gameobjects[12].x +20 && gameobjects[12].x <gameobjects[21].x+20 &&
-    gameobjects[12].y > gameobjects[21].y && gameobjects[0].y< gameobjects[21].y)
+if ( gameobjects[21].x+20 > gameobjects[12].x && gameobjects[12].x+6 > gameobjects[21].x &&
+    gameobjects[12].y < gameobjects[21].y+20 && gameobjects[12].y+3 > gameobjects[21].y && red1IsDroppedOven2==false)
 {
     red1IsDroppedOven2 = true;
+    red1IsPicked = false;
+    secondGordon.play();
+
 }
 
-if ( gameobjects[20].x< gameobjects[13].x +20 && gameobjects[13].x <gameobjects[20].x+20 &&
-    gameobjects[13].y > gameobjects[20].y && gameobjects[0].y< gameobjects[20].y)
+if ( gameobjects[20].x+20 > gameobjects[13].x && gameobjects[13].x+6 > gameobjects[20].x &&
+    gameobjects[13].y < gameobjects[20].y+20 && gameobjects[13].y+3 > gameobjects[20].y && red2IsDroppedOven1==false)
 {
     red2IsDroppedOven1 = true;
+    red2IsPicked = false;
+    secondGordon.play();
+
 }
-if ( gameobjects[21].x< gameobjects[13].x +20 && gameobjects[13].x <gameobjects[21].x+20 &&
-    gameobjects[13].y > gameobjects[21].y && gameobjects[0].y< gameobjects[21].y)
+if ( gameobjects[21].x+20 > gameobjects[13].x && gameobjects[13].x+6 > gameobjects[21].x &&
+    gameobjects[13].y < gameobjects[21].y+20 && gameobjects[13].y+3 > gameobjects[21].y && red2IsDroppedOven2==false)
 {
     red2IsDroppedOven2 = true;
+    red2IsPicked = false;
+    secondGordon.play();
+
 }
 /////////////////////////////////////////////////
-if ( gameobjects[20].x< gameobjects[14].x +20 && gameobjects[14].x <gameobjects[20].x+20 &&
-    gameobjects[14].y > gameobjects[20].y && gameobjects[0].y< gameobjects[20].y)
+if ( gameobjects[20].x+20 > gameobjects[14].x && gameobjects[14].x+6 > gameobjects[20].x &&
+    gameobjects[14].y < gameobjects[20].y+20 && gameobjects[14].y+3 > gameobjects[20].y && purple1IsDroppedOven1==false)
 {
     purple1IsDroppedOven1 = true;
+    purple1IsPicked = false;
+    thirdGordon.play();
+
 }
-if ( gameobjects[21].x< gameobjects[14].x +20 && gameobjects[14].x <gameobjects[21].x+20 &&
-    gameobjects[14].y > gameobjects[21].y && gameobjects[0].y< gameobjects[21].y)
+if ( gameobjects[21].x+20 > gameobjects[14].x && gameobjects[14].x+6 > gameobjects[21].x &&
+    gameobjects[14].y < gameobjects[21].y+20 && gameobjects[14].y+3 > gameobjects[21].y && purple1IsDroppedOven2==false)
 {
     purple1IsDroppedOven2 = true;
+    purple1IsPicked = false;
+    thirdGordon.play();
+
 }
 
-if ( gameobjects[20].x< gameobjects[15].x +20 && gameobjects[15].x <gameobjects[20].x+20 &&
-    gameobjects[15].y > gameobjects[20].y && gameobjects[0].y< gameobjects[20].y)
+if ( gameobjects[20].x+20 > gameobjects[15].x && gameobjects[15].x+6 > gameobjects[20].x &&
+    gameobjects[15].y < gameobjects[20].y+20 && gameobjects[15].y+3 > gameobjects[20].y && purple2IsDroppedOven1==false)
 {
     purple2IsDroppedOven1 = true;
+    purple2IsPicked = false;
+    thirdGordon.play();
+
 }
-if ( gameobjects[21].x< gameobjects[15].x +20 && gameobjects[15].x <gameobjects[21].x+20 &&
-    gameobjects[15].y > gameobjects[21].y && gameobjects[0].y< gameobjects[21].y)
+if (gameobjects[21].x+20 > gameobjects[15].x && gameobjects[15].x+6 > gameobjects[21].x &&
+    gameobjects[15].y < gameobjects[21].y+20 && gameobjects[15].y+3 > gameobjects[21].y && purple2IsDroppedOven2==false)
 {
     purple2IsDroppedOven2 = true;
+    purple2IsPicked = false;
+    thirdGordon.play();
+
 }
 /////////////////////////////////////////////////////
-if ( gameobjects[20].x< gameobjects[16].x +20 && gameobjects[16].x <gameobjects[20].x+20 &&
-    gameobjects[16].y > gameobjects[20].y && gameobjects[0].y< gameobjects[20].y)
+if ( gameobjects[20].x+20 > gameobjects[16].x && gameobjects[16].x+6 > gameobjects[20].x &&
+    gameobjects[16].y < gameobjects[20].y+20 && gameobjects[16].y+3 > gameobjects[20].y && orange1IsDroppedOven1==false)
 {
     orange1IsDroppedOven1 = true;
+    orange1IsPicked = false;
+    fourthGordon.play();
 }
-if ( gameobjects[21].x< gameobjects[16].x +20 && gameobjects[16].x <gameobjects[21].x+20 &&
-    gameobjects[16].y > gameobjects[21].y && gameobjects[0].y< gameobjects[21].y)
+if ( gameobjects[21].x+20 > gameobjects[16].x && gameobjects[16].x+6 > gameobjects[21].x &&
+    gameobjects[16].y < gameobjects[21].y+20 && gameobjects[16].y+3 > gameobjects[21].y && orange1IsDroppedOven2==false)
 {
     orange1IsDroppedOven2 = true;
+    orange1IsPicked = false;
+    fourthGordon.play();
 }
 
-if ( gameobjects[20].x< gameobjects[17].x +20 && gameobjects[17].x <gameobjects[20].x+20 &&
-    gameobjects[17].y > gameobjects[20].y && gameobjects[0].y< gameobjects[20].y)
+if (gameobjects[20].x+20 > gameobjects[17].x && gameobjects[17].x+6 > gameobjects[20].x &&
+    gameobjects[17].y < gameobjects[20].y+20 && gameobjects[17].y+3 > gameobjects[20].y && orange2IsDroppedOven1==false)
 {
     orange2IsDroppedOven1 = true;
+    orange2IsPicked = false;
+    fourthGordon.play();
 }
-if ( gameobjects[21].x< gameobjects[17].x +20 && gameobjects[17].x <gameobjects[21].x+20 &&
-    gameobjects[17].y > gameobjects[21].y && gameobjects[0].y< gameobjects[21].y)
+if ( gameobjects[21].x+20 > gameobjects[17].x && gameobjects[17].x+6 > gameobjects[21].x &&
+    gameobjects[17].y < gameobjects[21].y+20 && gameobjects[17].y+3 > gameobjects[21].y && orange2IsDroppedOven2==false)
 {
     orange2IsDroppedOven2 = true;
+    orange2IsPicked = false;
+    fourthGordon.play();
 }
 ////////////////////////////////////////////////////////
-if ( gameobjects[20].x< gameobjects[18].x +20 && gameobjects[18].x <gameobjects[20].x+20 &&
-    gameobjects[18].y > gameobjects[20].y && gameobjects[0].y< gameobjects[20].y)
+if ( gameobjects[20].x+20 > gameobjects[18].x && gameobjects[18].x+6 > gameobjects[20].x &&
+    gameobjects[18].y < gameobjects[20].y+20 && gameobjects[18].y+3 > gameobjects[20].y && green1IsDroppedOven1==false)
 {
     green1IsDroppedOven1 = true;
+    green1IsPicked = false;
+    firstGordon.play();
 }
-if ( gameobjects[21].x< gameobjects[18].x +20 && gameobjects[18].x <gameobjects[21].x+20 &&
-    gameobjects[18].y > gameobjects[21].y && gameobjects[0].y< gameobjects[21].y)
+if ( gameobjects[21].x+20 > gameobjects[18].x && gameobjects[18].x+6 > gameobjects[21].x &&
+    gameobjects[18].y < gameobjects[21].y+20 && gameobjects[18].y+3 > gameobjects[21].y && green1IsDroppedOven2==false)
 {
     green1IsDroppedOven2 = true;
+    green1IsPicked = false;
+    secondGordon.play();
 }
 
-if ( gameobjects[20].x< gameobjects[19].x +20 && gameobjects[19].x <gameobjects[20].x+20 &&
-    gameobjects[19].y > gameobjects[20].y && gameobjects[0].y< gameobjects[20].y)
+if ( gameobjects[20].x+20 > gameobjects[19].x && gameobjects[19].x+6 > gameobjects[20].x &&
+    gameobjects[19].y < gameobjects[20].y+20 && gameobjects[19].y+3 > gameobjects[20].y && green2IsDroppedOven1==false)
 {
     green2IsDroppedOven1 = true;
+    green2IsPicked = false;
+    thirdGordon.play();
 }
-if ( gameobjects[21].x< gameobjects[19].x +20 && gameobjects[19].x <gameobjects[21].x+20 &&
-    gameobjects[19].y > gameobjects[21].y && gameobjects[0].y< gameobjects[21].y)
+if ( gameobjects[21].x+20 > gameobjects[19].x && gameobjects[19].x+6 > gameobjects[21].x &&
+    gameobjects[19].y < gameobjects[21].y+20 && gameobjects[19].y+3 > gameobjects[21].y&& green2IsDroppedOven2==false)
 {
     green2IsDroppedOven2 = true;
+    green2IsPicked = false;
+    fourthGordon.play();
 }
 ///////////////////////////////////////
 //order pick up////////////////////////

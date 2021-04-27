@@ -3,7 +3,8 @@ var filesToCache = [
   '/',
   '/index.html',
   '/css/push.css',
-  '/js/script.js'
+  '/js/script.js',
+  '/Audio/Gordon1.wav'
 ];
 
 /* Cache contents when Offline See Cache */
