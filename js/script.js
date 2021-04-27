@@ -37,6 +37,12 @@ stove.src = "./img/STOVE.png";
 var food = new Image();
 food.src = "./img/FOOD.png";
 
+var meme1 = new Image();
+meme1.src = "./img/Done.png";
+
+var meme2 = new Image();
+meme2.src = "./img/Fail.jpg";
+
 //blue ingredient pick up boolean
 var blue1IsPicked = new Boolean(false);
 var blue2IsPicked = new Boolean(false);
@@ -118,7 +124,12 @@ var thirdGordon= document.getElementById("Gordon3");
 var fourthGordon= document.getElementById("Gordon4");
 //////////////////////////////////////////////////////////////////
 var restaurantSound= document.getElementById("RestaurantBackground");
-
+///////////////////////////////////////////////////////////////////////////
+var finished1 = new Boolean(false);
+var finished2 = new Boolean(false);
+////////////////////////////////////////////////////////////////////////////
+var notFinished = new Boolean(false);
+////////////////////////////////////////////////////////////////////////////
 // Default GamerInput is set to None
 var gamerInput = new GamerInput("None"); //No Input
 
@@ -305,6 +316,24 @@ function drawEatingBar2()
     var fillVal = Math.min(Math.max(val / max, 0), 1);
     context.fillRect(gameobjects[4].x+5, gameobjects[4].y+14, fillVal * width, height);
 }
+
+function gameTime()
+{
+    var width = canvas.width;
+    var height = 10;
+    var max = 4000;
+    var val = gameTimer;
+
+    // Draw the background
+    context.fillStyle = "#00FF00";//"#000000";
+    context.clearRect(0,0, canvas.width, canvas.height);
+    context.fillRect(0,0, width, height);
+
+    // Draw the fill
+    context.fillStyle = "#000000";//"#00FF00";
+    var fillVal = Math.min(Math.max(val / max, 0), 1);
+    context.fillRect(0,0, fillVal * width, height);
+}
 // Update Heads Up Display with Weapon Information
 //var xhttp = new XMLHttpRequest();
 //xhttp.onreadystatechange = function() {
@@ -471,6 +500,7 @@ var cookingTime1 = 120;
 var cookingTime2 = 120;
 var eatingTime1 = 120;
 var eatingTime2 = 120;
+var gameTimer = 4000;
 function init()
 {
     //npcs
@@ -600,7 +630,10 @@ function update() {
     // Iterate through all GameObjects
     // Updating position and gamestate
     // console.log("Update");
-    //restaurantSound.play();
+    
+    restaurantSound.play();
+
+
     if(mat1Oven1Dropped == true && mat2Oven1Dropped == true && mat3Oven1Dropped == true && mat4Oven1Dropped == true)
     {
         cookingTime1--;
@@ -624,6 +657,23 @@ function update() {
     if(eatingOrder2 == true)
     {
         eatingTime2--;
+    }
+
+    if(eatingTime1 == 0)
+    {
+        finished1 = true;
+    }
+    if(eatingTime2 == 0)
+    {
+        finished2 = true;
+    }
+
+
+    gameTimer--;
+
+    if(gameTimer == 0 && finished1 == false && finished2 == false)
+    {
+        notFinished = true;
     }
     updateXLocation();
     updateYLocation();
@@ -945,13 +995,13 @@ if(order2PickedUp == true)
 if(gameobjects[3].x< gameobjects[0].x+9 && gameobjects[0].x+7 <gameobjects[3].x+8 &&
     gameobjects[0].y+13.5 > gameobjects[3].y && gameobjects[0].y+13.5 < gameobjects[3].y+4)
 {
-    order1Dropped = true;
-    
+    order1Dropped = true;    
 }
 if(order1Dropped == true)
 {
     gameobjects[22].x = 180;
     gameobjects[22].y = 55;
+    order1PickedUp = false;
     eatingOrder1 = true;
 }
 if(gameobjects[4].x< gameobjects[0].x+9 && gameobjects[0].x+7 <gameobjects[4].x+8 &&
@@ -964,6 +1014,7 @@ if(order2Dropped == true)
 {
     gameobjects[23].x = 180;
     gameobjects[23].y = 105;
+    order2PickedUp = false;
     eatingOrder2 = true;
 }
 }
@@ -978,10 +1029,14 @@ function draw()
     // Draw each GameObject
     context.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
     //context.drawImage(image2,0,1000);
+
+    gameTime();
+
     drawCookingBar1();
     drawCookingBar2();
     drawEatingBar1();
     drawEatingBar2();
+
 
     context.drawImage(sprite, gameobjects[0].x, gameobjects[0].y);
     context.drawImage(npcImage, gameobjects[1].x, gameobjects[1].y);
@@ -1049,6 +1104,15 @@ function draw()
     drawTheOrderBar1();  
     drawTheOrderBar2()
 
+    if(finished1 == true && finished2 == true && notFinished == false )
+    {
+        context.drawImage(meme1,0,0,canvas.width, canvas.height);
+    }
+
+    if(notFinished == true)
+    {
+        context.drawImage(meme2,0,0,canvas.width, canvas.height);
+    }
 }
 
 // Total Frames
