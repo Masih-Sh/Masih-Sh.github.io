@@ -671,7 +671,7 @@ function update() {
 
     gameTimer--;
 
-    if(gameTimer == 0 && finished1 == false && finished2 == false)
+    if(gameTimer == 0 || finished1 == false && finished2 == false)
     {
         notFinished = true;
     }
